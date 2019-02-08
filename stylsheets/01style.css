@@ -1,0 +1,8 @@
+body {
+  display: flex;
+  color: red;
+}
+
+.invisible {
+  display: none;
+}
