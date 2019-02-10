@@ -2,16 +2,73 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>globe</title>
+  <title>GlobalData</title>
   <script src="./lib/bundle.js"></script>
   <link rel="stylesheet" type="text/css" href="./stylsheets//01style.css"/>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400"  rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 </head>
 <body>
-  <div id="main" width="100vw" height="100vh"></div>
-  <div>
-    <input type="text" id="country_input" placeholder="Search Country">
-    <ul id="countries-list">
-    </ul>
+  <main>
+    <div class="globe" id="main" width="100vw" height="100vh"></div>
+    <div class="search-bars">
+      <div>
+        <div class="search-bar">
+          <i class="fas fa-search"></i>
+          <input type="text" id="country-input" placeholder="Search Country">
+        </div>
+        <ul id="countries-list">
+        </ul>
+      </div>
+      <div class="product-div">
+        <div class="search-bar">
+          <i class="fas fa-search"></i>
+          <input type="text" id="product-input" placeholder="Search Product">
+        </div>
+        <ul id="products-list">
+        </ul>
+      </div>
+    </div>
+  </main>
+  <div class="range-div">
+    <div class="range">
+      <input type="range" class="year-range" min="1987" max="2017" steps="1" value="2017">
+      <ul class="range-labels">
+        <li class="active">1987</li>
+        <li>1988</li>
+        <li>1989</li>
+        <li>1990</li>
+        <li>1991</li>
+        <li>1992</li>
+        <li>1993</li>
+        <li>1994</li>
+        <li>1995</li>
+        <li>1996</li>
+        <li>1997</li>
+        <li>1998</li>
+        <li>1999</li>
+        <li>2000</li>
+        <li>2001</li>
+        <li>2002</li>
+        <li>2003</li>
+        <li>2004</li>
+        <li>2005</li>
+        <li>2006</li>
+        <li>2007</li>
+        <li>2008</li>
+        <li>2009</li>
+        <li>2010</li>
+        <li>2011</li>
+        <li>2012</li>
+        <li>2013</li>
+        <li>2014</li>
+        <li>2015</li>
+        <li>2016</li>
+        <li>2017</li>
+      </ul>
+    </div>
   </div>
+  
 </body>
 </html>
