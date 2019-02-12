@@ -103,6 +103,8 @@ input::placeholder { color: #aaa; }
   display: block;
   margin: 0 auto;
   height: 30px;
+  /* -webkit-appearance: none;
+  opacity: 0; */
 }
 
 .year-range:focus { 
@@ -123,6 +125,10 @@ input::placeholder { color: #aaa; }
   cursor: pointer;
 }  
   
-.range-labels .active {
+.active {
   color: #37adbf;
+}
+
+.search-bars {
+  margin-top: 200px;
 }
