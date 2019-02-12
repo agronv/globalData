@@ -1,6 +1,6 @@
 body {
   font-family: 'Open Sans', sans-serif;
-  background-image: url("./stars.jpg");
+  background-image: url("./starsagain.jpeg");
   color: white;
   margin: 0;
 }
@@ -79,6 +79,7 @@ input::placeholder { color: #aaa; }
   border: none;
   outline: none;
   margin: 0;
+  width: 100%;
 }
 
 .product-div {
@@ -103,8 +104,7 @@ input::placeholder { color: #aaa; }
   display: block;
   margin: 0 auto;
   height: 30px;
-  /* -webkit-appearance: none;
-  opacity: 0; */
+  background-color: transparent;
 }
 
 .year-range:focus { 
@@ -126,9 +126,49 @@ input::placeholder { color: #aaa; }
 }  
   
 .active {
-  color: #37adbf;
+  color: #7deeff;
 }
 
 .search-bars {
   margin-top: 150px;
+}
+
+#export-bar {
+  background: linear-gradient(#ff7b53, #ff1515);
+}
+
+#import-bar {
+  background: linear-gradient(#7deeff, #0015ff);
+}
+
+#export-bar, #import-bar {
+  width: 20px;
+}
+
+.bar-chart {
+  position: fixed;
+  bottom: 10px;
+  left: 70px;
+  width: 150px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.import-key {
+  color: #7deeff;
+}
+
+.export-key {
+  color: #ff7b53;
+}
+
+.export-data {
+  display: flex; 
+  flex-direction: column; 
+  align-items: flex-end;
+}
+
+#import-text, #export-text {
+  font-size: 18px;
 }
