@@ -1,6 +1,5 @@
 body {
   font-family: 'Open Sans', sans-serif;
-  background-image: url("./starsagain.jpeg");
   color: white;
   margin: 0;
 }
@@ -12,12 +11,11 @@ fieldset {
 }
 
 main {
-  display: flex;
   height: 100%;
 }
 
 .globe {
-  margin-left: 23%;
+  position: fixed;
 }
 
 .invisible {
@@ -37,7 +35,7 @@ main {
 
 #countries-list, #products-list {
   list-style: none;
-  height: 300px;
+  height: 594px;
   width: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
@@ -83,7 +81,7 @@ input::placeholder { color: #aaa; }
 }
 
 .product-div {
-  margin-top: 30px;
+  margin-left: 20px;
 }
 
 .range-div {
@@ -130,7 +128,10 @@ input::placeholder { color: #aaa; }
 }
 
 .search-bars {
-  margin-top: 150px;
+  position: fixed;
+  top: 30px;
+  right: 10px;
+  display: flex;
 }
 
 #export-bar {
@@ -149,7 +150,7 @@ input::placeholder { color: #aaa; }
   position: fixed;
   bottom: 10px;
   left: 70px;
-  width: 150px;
+  width: 155px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -171,4 +172,29 @@ input::placeholder { color: #aaa; }
 
 #import-text, #export-text {
   font-size: 18px;
+}
+
+.title {
+  position: fixed;
+  top: 0;
+  left: 100px;
+  font-size: 65px;
+  margin: 0;
+}
+
+.glow {
+  color: #fff;
+  text-align: center;
+  -webkit-animation: glow 2s ease-in-out infinite alternate;
+  -moz-animation: glow 2s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 10px #ddd, 0 0 10px #ddd, 0 0 15px #ddd, 0 0 20px #ddd, 0 0 25px #ddd, 0 0 30px #ddd, 0 0 35px #ddd;
+  }
+  to {
+    text-shadow: 0 0 15px #ccc, 0 0 15px #ccc, 0 0 20px #ccc, 0 0 25px #ccc, 0 0 30px #ccc, 0 0 35px #ccc, 0 0 40px #ccc;
+  }
 }
