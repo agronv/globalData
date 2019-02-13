@@ -12,10 +12,11 @@ fieldset {
 
 main {
   height: 100%;
+  width: 100%;
 }
 
 .globe {
-  position: fixed;
+  width: 100%;
 }
 
 .invisible {
@@ -130,7 +131,7 @@ input::placeholder { color: #aaa; }
 .search-bars {
   position: fixed;
   top: 30px;
-  right: 10px;
+  right: 30px;
   display: flex;
 }
 
@@ -259,4 +260,18 @@ input::placeholder { color: #aaa; }
     box-shadow: 0 -2em;
     height: 5em;
   }
+}
+
+.links {
+  position: fixed;
+  right: 50px;
+  top: 42%;
+  display: flex;
+  flex-direction: column;
+}
+
+.fa-github, .fa-linkedin {
+  font-size: 50px;
+  margin-top: 20px;
+  color: rgba(225,225,225, 0.8);
 }
