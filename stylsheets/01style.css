@@ -283,3 +283,17 @@ input::placeholder { color: #aaa; }
 .fa-github:hover, .fa-linkedin:hover, .fa-angellist:hover {
   color: rgba(100,100,100,0.8);
 }
+
+#no-data {
+  background-color: rgb(100,100,100,0.9);
+  font-size: 30px;
+  position: absolute;
+  left: 42.5%;
+  top: 44%;
+  padding: 20px 20px;
+  visibility: hidden;
+}
+
+.no-data-active {
+  visibility: visible !important; 
+}
