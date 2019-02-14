@@ -267,14 +267,19 @@ input::placeholder { color: #aaa; }
 
 .links {
   position: fixed;
-  right: 50px;
-  top: 42%;
+  right: 3%;
+  bottom: 1.5%;
+  width: 170px;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
 }
 
-.fa-github, .fa-linkedin {
+.fa-github, .fa-linkedin, .fa-angellist {
   font-size: 50px;
-  margin-top: 20px;
-  color: rgba(225,225,225, 0.8);
+  color: rgba(255,255,255, 0.8);
+  transition: color .2s ease-in-out;
+}
+
+.fa-github:hover, .fa-linkedin:hover, .fa-angellist:hover {
+  color: rgba(100,100,100,0.8);
 }
