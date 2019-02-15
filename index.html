@@ -5,7 +5,7 @@
   <title>GlobalData</title>
   <style>
     html {
-      background-image: url("./astro.jpg");
+      background-image: url("./starsbaby.jpg");
     }
   </style>
   <script src="./lib/bundle.js"></script>
@@ -13,37 +13,43 @@
   <link rel="stylesheet" type="text/css" href="./stylsheets/02slider-style.css"/>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400"  rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
-    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">  
+  <link rel="shortcut icon" type="image/png" href="./favicon.png" />
 </head>
 <body>
   <h1 class="title glow">Global Data</h1>
   <main>
-    <div class="globe" id="main" width="100vw" height="100vh"></div>
-    <div class="search-bars">
-      <div>
-        <div class="search-bar">
-          <i class="fas fa-search"></i>
-          <input type="text" id="country-input" placeholder="Search Country">
-        </div>
-        <ul id="countries-list">
-        </ul>
-      </div>
-      <div class="product-div">
-        <div class="search-bar">
-          <i class="fas fa-search"></i>
-          <input type="text" id="product-input" placeholder="Search Product">
-        </div>
-        <ul id="products-list">
-        </ul>
-      </div>
+    <div class="globe" id="main" width="100%" height="100%">
+      <div id="no-data" class="">
+        No data available
+        </br>
+        for this search 
+         </div>
+      <div id="loader" class="loader"></div>
     </div>
   </main>
-  <div class="range-div">
-    <div class="range">
-        <div class="circles"></div>
-        <input type="range" id="year-input" class="year-range" min="1997" max="2017" steps="1" value="2017">
-        <ul id="years-list"></ul>
+  <div class="search-bars">
+    <div>
+      <div class="search-bar">
+        <i class="fas fa-search"></i>
+        <input input="text" id="country-input" placeholder="Search Country">
       </div>
+      <ul id="countries-list">
+      </ul>
+    </div>
+    <div class="product-div">
+      <div class="search-bar">
+        <i class="fas fa-search"></i>
+        <input input="tex" id="product-input" placeholder="Search Product">
+      </div>
+      <ul id="products-list">
+      </ul>
+    </div>
+  </div>
+  <div class="range">
+      <div class="circles"></div>
+      <input type="range" id="year-input" class="year-range" min="1997" max="2017" steps="1" value="2017">
+      <ul id="years-list"></ul>
     </div>
   </div>
   <div class="bar-chart">
@@ -57,6 +63,11 @@
       <div id="import-text"></div>
       <div class="import-key">IMPORTS</div>
     </div>
+  </div>
+  <div class="links">
+    <a href="https://github.com/agronv"><i class="fab fa-github"></i></a>
+    <a href="https://www.linkedin.com/in/agron-velovic/"><i class="fab fa-linkedin"></i></a>
+    <a href="https://angel.co/agron-velovic"><i class="fab fa-angellist"></i></a>
   </div>
   
 </body>
