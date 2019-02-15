@@ -1,21 +1,15 @@
 # globalData
+[Live Demo][https://agronv.github.io/globalData/]
+
 ## Overview 
-globalData is a 3d visualization of trade between countries, User will be able to filter results through importing/exporting country as well
-as year and product. 
+globalData is a 3d visualization of trade between countries. Users are able to filter results by country, year, and product.
 
 ## Functionality & MVP
-1. User will be able to view and interact a 3d model of the globe 
-2. User will be able to see the quantity at which countries are importing and exporting goods through routes between countries
-3. users will be able to click on the map and select a country 
+1. Users will be able to view and interact with a 3d model of the globe 
+2. Users will be able to see the quantity at which countries are importing and exporting goods through bars on the globe
+3. Users will be able to search by country, year, and product.
 
 ## Technologies & Libraries 
-1. three.js
-2. d3.js
-3. atlas.media api 
-4. google api 
-
-## Implementation Timeline 
-* Day 1: create globe and allow user to interact with it, start extracting data from atlas.media api
-* Day 2: finish extracting information from atlas.media api and create trading routes between countries
-* Day 3: add more functionality like ability to change product and year. convert spherical coordinates to latituse and longitude,
-allowing user to click on country 
+1. Three.js
+3. Atlas.media api 
+4. Vanilla JavaScript
