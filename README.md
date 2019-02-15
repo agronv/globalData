@@ -1,5 +1,6 @@
 # globalData
-[Live Demo][https://agronv.github.io/globalData/]
+[Live Demo][link]
+[link]: https://agronv.github.io/globalData/
 
 ## Overview 
 globalData is a 3d visualization of trade between countries. Users are able to filter results by country, year, and product.
