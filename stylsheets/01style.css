@@ -36,7 +36,7 @@ main {
 
 #countries-list, #products-list {
   list-style: none;
-  height: 594px;
+  max-height: 594px;
   width: 300px;
   overflow-x: hidden;
   overflow-y: scroll;
@@ -82,7 +82,15 @@ input::placeholder { color: #aaa; }
 }
 
 .product-div {
-  margin-left: 20px;
+  position: fixed;
+  top: 30px;
+  right: 30px;
+}
+
+.country-div {
+  position: fixed;
+  top: 30px;
+  right: 350px;
 }
 
 .range-div {
@@ -135,7 +143,6 @@ input::placeholder { color: #aaa; }
   position: fixed;
   top: 30px;
   right: 30px;
-  display: flex;
 }
 
 #export-bar {
