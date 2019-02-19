@@ -127,7 +127,7 @@ main {
 }  
   
 .active {
-  color: #7deeff;
+  color: rgb(24, 251, 255);
 }
 
 .search-bars {
@@ -137,11 +137,11 @@ main {
 }
 
 #export-bar {
-  background: linear-gradient(#ff7b53, #ff1515);
+  background: linear-gradient(#ff33e0, #DA7B93);
 }
 
 #import-bar {
-  background: linear-gradient(#7deeff, #0015ff);
+  background: linear-gradient(rgb(24, 251, 255), #376E6F);
 }
 
 #export-bar, #import-bar {
@@ -159,11 +159,11 @@ main {
 }
 
 .import-key {
-  color: #7deeff;
+  color: rgb(24, 251, 255);
 }
 
 .export-key {
-  color: #ff7b53;
+  color: #ff33e0;
 }
 
 .export-data {
@@ -174,14 +174,6 @@ main {
 
 #import-text, #export-text {
   font-size: 18px;
-}
-
-.glow {
-  color: #fff;
-  text-align: center;
-  -webkit-animation: glow 2s ease-in-out infinite alternate;
-  -moz-animation: glow 2s ease-in-out infinite alternate;
-  animation: glow 1s ease-in-out infinite alternate;
 }
 
 .links {
