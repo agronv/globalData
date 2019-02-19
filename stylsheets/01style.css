@@ -218,6 +218,8 @@ main {
 
 #search-query {
   margin: 0;
+  font-size: 20px;
+  padding: 0px 10px 10px 10px;
   transition: transform 1.5s;
 }
 
