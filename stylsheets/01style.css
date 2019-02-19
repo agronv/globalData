@@ -188,11 +188,12 @@ main {
 .fa-github, .fa-linkedin, .fa-angellist {
   font-size: 50px;
   color: rgba(255,255,255, 0.8);
-  transition: color .2s ease-in-out;
+  transition: color .2s ease-in-out, transform .5s ease-in-out;
 }
 
 .fa-github:hover, .fa-linkedin:hover, .fa-angellist:hover {
   color: rgba(100,100,100,0.8);
+  transform: rotate(360deg);
 }
 
 #no-data {
@@ -210,11 +211,25 @@ main {
 }
 
 .title {
-  position: fixed;
-  top: 10px;
-  left: 5.5%;
+  position: relative;
   font-size: 65px;
   margin: 0;
+}
+
+#search-query {
+  margin: 0;
+  transition: transform 1.5s;
+}
+
+#search-query:hover {
+  transform: rotatex(360deg);
+}
+
+.title-div {
+  position: fixed;
+  top: 10px;
+  left: 3%;
+  z-index: 500;
 }
 
 .loader,
