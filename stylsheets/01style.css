@@ -316,24 +316,11 @@ input::placeholder { color: #aaa; }
 
 @media (max-width: 1400px) {
   .search-bars {
-    flex-direction: column;
     right: 1%;
   }
 
   .search-bars div {
     width: 250px;
-  }
-
-  #countries-list, #products-list {
-    height: 332px;
-  }
-
-  #countries-list {
-    margin-bottom: 20px;
-  }
-
-  .country-div {
-    margin: 0;
   }
 
   .links {
@@ -350,6 +337,24 @@ input::placeholder { color: #aaa; }
 
   .range {
     left: 16%;
+  }
+}
+
+@media (max-width: 1500px) {
+  .search-bars {
+    flex-direction: column;
+  }
+
+  #countries-list, #products-list {
+    height: 332px;
+  }
+
+  #countries-list {
+    margin-bottom: 20px;
+  }
+
+  .country-div {
+    margin: 0;
   }
 }
 
