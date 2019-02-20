@@ -28,7 +28,7 @@ main {
 }
 
 .search-bar {
-  width: 300px;
+  width: 100%;
   display: flex;
   background-color: rgb(75,75,75, 0.7);
   border-bottom: 1px solid black;
@@ -37,7 +37,7 @@ main {
 #countries-list, #products-list {
   list-style: none;
   max-height: 594px;
-  width: 300px;
+  width: 100%;
   overflow-x: hidden;
   overflow-y: scroll;
   padding: 0;
@@ -72,17 +72,24 @@ main {
   width: 100%;
 }
 
-.product-div {
+.search-bars {
   position: fixed;
-  top: 30px;
-  right: 30px;
+  top: 2%;
+  right: 2%;
+  display: flex;
+  flex-direction: row;
+}
+
+.search-bars div {
+  width: 300px;
 }
 
 .country-div {
-  position: fixed;
-  top: 30px;
-  right: 350px;
+  margin-right: 20px;
 }
+
+/* .product-div {
+} */
 
 .range-div {
   position: fixed;
@@ -305,4 +312,54 @@ input::placeholder { color: #aaa; }
 ::-webkit-scrollbar { 
   width: 0px;
   background: transparent;
+}
+
+@media (max-width: 1400px) {
+  .search-bars {
+    right: 1%;
+  }
+
+  .search-bars div {
+    width: 250px;
+  }
+
+  .links {
+    right: 1%;
+  }
+
+  .bar-chart {
+    left: 1%;
+  }
+
+  .title-div {
+    left: 1%;
+  }
+
+  .range {
+    left: 16%;
+  }
+}
+
+@media (max-width: 1500px) {
+  .search-bars {
+    flex-direction: column;
+  }
+
+  #countries-list, #products-list {
+    height: 332px;
+  }
+
+  #countries-list {
+    margin-bottom: 20px;
+  }
+
+  .country-div {
+    margin: 0;
+  }
+}
+
+@media (max-height: 800px) {
+  #countries-list, #products-list {
+    height: 250px;
+  }
 }
