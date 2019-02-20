@@ -352,3 +352,9 @@ input::placeholder { color: #aaa; }
     left: 16%;
   }
 }
+
+@media (max-height: 800px) {
+  #countries-list, #products-list {
+    height: 250px;
+  }
+}
