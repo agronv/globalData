@@ -27,20 +27,32 @@ globalData is a 3d visualization of trade between countries. Users are able to f
   This bar is then set to be perpendicular to the surface of the globe.
 
 ```javascript
-  function addPoint(lat, lon) {
-    let phi = (90 - lat) * Math.PI / 180;
-    let theta = (180 - lon) * Math.PI / 180;
+  getCurveFromCoords(startLat, startLng, endLat, endLng) {
+    // start and end points
+    const start = this.coordinateToPosition(startLat, startLng, this.globeRadius);
+    const end = this.coordinateToPosition(endLat, endLng, this.globeRadius);
 
-    point.position.x = 180 * Math.sin(phi) * Math.cos(theta);
-    point.position.y = 180 * Math.cos(phi);
-    point.position.z = 180 * Math.sin(phi) * Math.sin(theta);
+    // altitude
+    const altitude = this.clamp(start.distanceTo(end) * 0.75, this.minAltitude, this.maxAltitude);
 
-    point.lookAt(mesh.position);
-    point.updateMatrix();
+    // 2 control points
+    const interpolate = geoInterpolate([startLng, startLat], [endLng, endLat]);
+    const midCoord1 = interpolate(0.25);
+    const midCoord2 = interpolate(0.75);
+    const mid1 = this.coordinateToPosition(midCoord1[1], midCoord1[0], this.globeRadius + altitude);
+    const mid2 = this.coordinateToPosition(midCoord2[1], midCoord2[0], this.globeRadius + altitude);
 
-    if (point.matrixAutoUpdate) {
-        point.updateMatrix();
-    }
-    scene.add(point);
+    return new THREE.CubicBezierCurve3(start, mid1, mid2, end);
+  }
+
+  coordinateToPosition(lat, lng, radius) {
+    const phi = (90 - lat) * Math.PI / 180;
+    const theta = (180 - lng) * Math.PI / 180;
+
+    return new THREE.Vector3(
+      radius * Math.sin(phi) * Math.cos(theta),
+      radius * Math.cos(phi),
+      radius * Math.sin(phi) * Math.sin(theta)
+    );
   }
 ```
