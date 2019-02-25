@@ -192,15 +192,14 @@ main {
   justify-content: space-between;
 }
 
-.fa-github, .fa-linkedin, .fa-angellist {
-  font-size: 50px;
+.fa-github, .fa-linkedin, .fa-angellist, .fa-user {
+  font-size: 25px;
   color: rgba(255,255,255, 0.8);
-  transition: color .2s ease-in-out, transform .5s ease-in-out;
+  transition: 0.7s;
 }
 
-.fa-github:hover, .fa-linkedin:hover, .fa-angellist:hover {
-  color: rgba(100,100,100,0.8);
-  transform: rotate(360deg);
+.fa-github:hover, .fa-linkedin:hover, .fa-angellist:hover, .fa-user:hover {
+  transform: scale(1.5) rotate(360deg);
 }
 
 #no-data {
