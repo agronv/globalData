@@ -74,7 +74,7 @@ main {
 
 .search-bars {
   position: fixed;
-  top: 2%;
+  top: 1.5%;
   right: 2%;
   display: flex;
   flex-direction: row;
@@ -236,7 +236,7 @@ main {
 
 .title-div {
   position: fixed;
-  top: 10px;
+  top: 1.5px;
   left: 3%;
   z-index: 500;
 }
@@ -362,4 +362,16 @@ input::placeholder { color: #aaa; }
   #countries-list, #products-list {
     height: 250px;
   }
+}
+
+#description {
+  position: absolute;
+  top: 39.5%;
+  left: 35.8%;
+  padding: 50px;
+  background-color: rgb(100,100,100,0.9);
+  border: 4px solid rgb(0,0,0, 0.9);
+  border-radius: 5px;
+  z-index: 20;
+  visibility: hidden;
 }
