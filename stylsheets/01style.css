@@ -194,12 +194,13 @@ main {
 
 .fa-github, .fa-linkedin, .fa-angellist, .fa-user {
   font-size: 25px;
-  color: rgba(255,255,255, 0.8);
-  transition: 0.7s;
+  color: rgba(255,255,255, 0.6);
+  transition: 0.8s;
 }
 
 .fa-github:hover, .fa-linkedin:hover, .fa-angellist:hover, .fa-user:hover {
   transform: scale(1.5) rotate(360deg);
+  color: rgba(255,255,255);
 }
 
 #no-data {
