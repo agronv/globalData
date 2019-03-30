@@ -14,6 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "d3-geo": "^1.11.3",
+    "graphql": "^14.2.0",
     "three": "^0.101.1",
     "webpack": "^4.29.1",
     "webpack-cli": "^3.2.3"
