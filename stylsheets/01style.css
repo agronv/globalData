@@ -74,7 +74,7 @@ main {
 
 .search-bars {
   position: fixed;
-  top: 2%;
+  top: 1.5%;
   right: 2%;
   display: flex;
   flex-direction: row;
@@ -194,12 +194,13 @@ main {
 
 .fa-github, .fa-linkedin, .fa-angellist, .fa-user {
   font-size: 25px;
-  color: rgba(255,255,255, 0.8);
-  transition: 0.7s;
+  color: rgba(255,255,255, 0.6);
+  transition: 0.8s;
 }
 
 .fa-github:hover, .fa-linkedin:hover, .fa-angellist:hover, .fa-user:hover {
   transform: scale(1.5) rotate(360deg);
+  color: rgba(255,255,255);
 }
 
 #no-data {
@@ -235,7 +236,7 @@ main {
 
 .title-div {
   position: fixed;
-  top: 10px;
+  top: 1.5px;
   left: 3%;
   z-index: 500;
 }
@@ -254,8 +255,8 @@ main {
   text-indent: -9999em;
   z-index: 30;
   position: absolute;
-  left: 50%;
-  top: 47%;
+  left: 49.5%;
+  top: 46%;
   font-size: 20px;
   -webkit-transform: translateZ(0);
   -ms-transform: translateZ(0);
@@ -361,4 +362,16 @@ input::placeholder { color: #aaa; }
   #countries-list, #products-list {
     height: 250px;
   }
+}
+
+#description {
+  position: absolute;
+  top: 39.5%;
+  left: 35.8%;
+  padding: 50px;
+  background-color: rgb(100,100,100,0.9);
+  border: 4px solid rgb(0,0,0, 0.9);
+  border-radius: 5px;
+  z-index: 20;
+  visibility: hidden;
 }
