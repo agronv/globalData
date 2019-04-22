@@ -28,14 +28,11 @@ globalData is a 3d visualization of trade between countries. Users are able to f
 
 ```javascript
   getCurveFromCoords(startLat, startLng, endLat, endLng) {
-    // start and end points
     const start = this.coordinateToPosition(startLat, startLng, this.globeRadius);
     const end = this.coordinateToPosition(endLat, endLng, this.globeRadius);
 
-    // altitude
     const altitude = this.clamp(start.distanceTo(end) * 0.75, this.minAltitude, this.maxAltitude);
 
-    // 2 control points
     const interpolate = geoInterpolate([startLng, startLat], [endLng, endLat]);
     const midCoord1 = interpolate(0.25);
     const midCoord2 = interpolate(0.75);
