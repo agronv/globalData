@@ -1,4 +1,5 @@
 const path = require('path');
+var webpack = require('webpack');
 
 module.exports = {
     entry: "./lib/index.js",
@@ -7,5 +8,10 @@ module.exports = {
         filename: "bundle.js",
         publicPath: "/globalData/"
     },
+    plugins: [
+        new webpack.ProvidePlugin({
+            'THREE': require.resolve('three')
+        })
+    ],
     devtool: 'source-map',
 };
