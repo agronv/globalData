@@ -380,6 +380,7 @@ input::placeholder {
   #countries-list,
   #products-list {
     height: 332px;
+    overflow: scroll;
   }
 
   #countries-list {
