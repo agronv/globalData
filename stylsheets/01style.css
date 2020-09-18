@@ -158,8 +158,8 @@ main {
 .bar-chart {
   position: fixed;
   bottom: 10px;
-  left: 4%;
-  width: 155px;
+  left: 2%;
+  width: 180px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -173,10 +173,12 @@ main {
   color: #ff33e0;
 }
 
-.export-data {
+.export-data, .import-data {
+  width: 50%;
   display: flex; 
   flex-direction: column; 
-  align-items: flex-end;
+  justify-content: center;
+  align-items: center;
 }
 
 #import-text, #export-text {
@@ -185,20 +187,20 @@ main {
 
 .links {
   position: fixed;
-  right: 3%;
+  right: 5.5%;
   bottom: 1.5%;
-  width: 170px;
+  width: 80px;
   display: flex;
   justify-content: space-between;
 }
 
-.fa-github, .fa-linkedin, .fa-angellist, .fa-user {
-  font-size: 25px;
+.fa-github, .fa-linkedin {
+  font-size: 32px;
   color: rgba(255,255,255, 0.6);
   transition: 0.8s;
 }
 
-.fa-github:hover, .fa-linkedin:hover, .fa-angellist:hover, .fa-user:hover {
+.fa-github:hover, .fa-linkedin:hover {
   transform: scale(1.5) rotate(360deg);
   color: rgba(255,255,255);
 }
@@ -228,10 +230,6 @@ main {
   font-size: 20px;
   padding: 0px 10px 10px 10px;
   transition: transform 1.5s;
-}
-
-#search-query:hover {
-  transform: rotatex(360deg);
 }
 
 .title-div {
