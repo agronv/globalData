@@ -57,7 +57,7 @@ main {
   text-overflow: ellipsis;
 }
 
-.list-item:hover,
+/* .list-item:hover, */
 .active-item {
   background-color: rgba(200, 200, 200, 0.7);
 }
