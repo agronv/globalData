@@ -19,7 +19,7 @@ globalData is a 3d visualization of trade between countries. Users are able to f
 
 <br/>
 
-![restaurant_search](/globalData.png)
+![gif](/globey.gif)
 
 ## Adding data point to globe
   Data bars are not directly attached to the globe when data is added. Instead,
