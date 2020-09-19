@@ -235,17 +235,27 @@ main {
   visibility: visible !important;
 }
 
-.title {
+#title {
   position: relative;
   font-size: 65px;
   margin: 0;
+  opacity: 0
+}
+
+#title.appear {
+  opacity: 1 !important;
+  transition: opacity 3s ease;
 }
 
 #search-query {
   margin: 0;
   font-size: 20px;
   padding: 0px 10px 10px 10px;
-  transition: transform 1.5s;
+}
+
+#search-query.appear {
+  opacity: 1 !important;
+  transition: opacity 3s ease;
 }
 
 .title-div {

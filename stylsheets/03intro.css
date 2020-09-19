@@ -1,178 +1,170 @@
+#intro.fade-away {
+  opacity: 0 !important;
+  z-index: -10 !important;
+  transition: opacity 1.5s ease;
+}
+
 #intro {
-  position: fixed;
   width: 100%;
   height: 100%;
-  left: 0;
-  top: 0;
-  background: rgba(51, 51, 51, 0.7);
   z-index: 10;
-}
-
-.intro-header {
-  font-family: 'lato', sans-serif;
-  width: 256px;
-  height: 60px;
-  left: 50%;
-  top: 30%;
-  margin-top: -30px;
-  margin-left: -128px;
+  background: rgba(70, 70, 70, 0.7);
   position: absolute;
-  animation: logo 5s ease;
+}
 
-  @keyframes logo {
-    from {
-      transform: translateY(300px) scale(1.7);
-    }
+#intro div {
+  margin: 0 auto;
+  box-sizing: border-box;
+  width: inherit;
+  text-align: center;
+  color: #fff;
+  line-height: 60px;
+}
 
-    40% {
-      transform: translateY(110px) scale(1.3);
-    }
+#intro .welcome {
+  margin-top: 100px;
+  font-size: 28px;
+  opacity: 0.5;
+  color: rgba(255, 255, 255);
+  animation: welcome 3s ease;
+}
 
-    70% {
-      transform: translateY(110px) scale(1.3);
-    }
-  }
-
-  span {
-    position: absolute;
-    font-size: 64px;
-    color: #fff;
-    line-height: 60px;
-  }
-
-  span:nth-child(1) {
-    font-size: 32px;
-    width: inherit;
-    text-align: center;
-    margin-top: -55px;
-    color: rgba(255, 255, 255, .6);
-    animation: weare 5s ease;
-  }
-
-  @keyframes weare {
-    from {
-      opacity: 0;
-      transform: translateY(-40px);
-    }
-
-    40% {
-      opacity: 0;
-    }
-
-    70% {
-      opacity: 0;
-      transform: translateY(-40px);
-    }
-  }
-
-  span:nth-child(2) {
-    font-size: 28px;
-    width: inherit;
-    text-align: center;
+@keyframes welcome {
+  from {
+    font-size: 50px;
+    transform: translateY(60px);
     opacity: 0;
-    margin-top: -55px;
-    color: rgba(255, 255, 255, .6);
-    animation: weprovide 5s ease;
   }
 
-  @keyframes weprovide {
-    from {
-      opacity: 0;
-    }
-
-    40% {
-      opacity: 1;
-    }
-
-    70% {
-      opacity: 0;
-    }
-  }
-
-  span:nth-child(3) {
-    left: 13px;
-    animation: a 5s ease;
-    transform: translateX(0px);
-  }
-
-  @keyframes a {
-    from {
-      opacity: 0;
-      transform: translateX(-90px);
-    }
-
-    40% {
-      opacity: 1;
-    }
-
-    70% {
-      transform: translateX(-90px);
-    }
-  }
-
-  span:nth-child(4) {
-    left: 54px;
-    animation: n 5s ease;
-    transform: translateX(0px);
-  }
-
-  @keyframes n {
-    from {
-      opacity: 0;
-      transform: translateX(-70px);
-    }
-
-    40% {
-      opacity: 1;
-    }
-
-    70% {
-      transform: translateX(-70px);
-    }
-  }
-
-  span:nth-child(5) {
-    left: 30px;
-    opacity: 0;
-    animation: ice 5s ease;
-  }
-
-  @keyframes ice {
-    from {
-      opacity: 0;
-    }
-
-    40% {
-      opacity: 1;
-    }
-
-    70% {
-      opacity: 1;
-    }
-
-    80% {
-      opacity: 0;
-    }
-  }
-
-  span:nth-child(6) {
-    left: 102px;
-    animation: view 5s ease;
-    transform: translateX(0px);
-  }
-
-  @keyframes view {
-    from {
-      opacity: 0;
-      transform: translateX(60px);
-    }
-
-    40% {
-      opacity: 1;
-    }
-
-    70% {
-      transform: translateX(60px);
-    }
+  40% {
+    font-size: 50px;
+    opacity: 1;
+    transform: translateY(60px);
   }
 }
+
+#intro .global {
+  font-size: 80px;
+  color: #FFF;
+  opacity: 1;
+  animation: global 5s ease;
+}
+
+@keyframes global {
+  from {
+    opacity: 0;
+  }
+
+  35% {
+    opacity: 0;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#intro span:nth-child(3) {
+  left: 13px;
+  animation: a 5s ease;
+  transform: translateX(0px);
+}
+
+@keyframes a {
+  from {
+    opacity: 0;
+    transform: translateX(-90px);
+  }
+
+  40% {
+    opacity: 1;
+  }
+
+  70% {
+    transform: translateX(-90px);
+  }
+}
+
+#intro span:nth-child(4) {
+  left: 54px;
+  animation: n 5s ease;
+  transform: translateX(0px);
+}
+
+@keyframes n {
+  from {
+    opacity: 0;
+    transform: translateX(-70px);
+  }
+
+  40% {
+    opacity: 1;
+  }
+
+  70% {
+    transform: translateX(-70px);
+  }
+}
+
+#intro  span:nth-child(5) {
+  left: 30px;
+  opacity: 0;
+  animation: ice 5s ease;
+}
+
+@keyframes ice {
+  from {
+    opacity: 0;
+  }
+
+  40% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 0;
+  }
+}
+
+#intro span:nth-child(6) {
+  left: 102px;
+  animation: view 5s ease;
+  transform: translateX(0px);
+}
+
+@keyframes view {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+
+  40% {
+    opacity: 1;
+  }
+
+  70% {
+    transform: translateX(60px);
+  }
+} 
