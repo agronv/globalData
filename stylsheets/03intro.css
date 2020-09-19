@@ -8,7 +8,7 @@
   width: 100%;
   height: 100%;
   z-index: 10;
-  background: rgba(70, 70, 70, 0.7);
+  background: rgba(25, 25, 25, 0.9);
   position: absolute;
 }
 
@@ -18,14 +18,12 @@
   width: inherit;
   text-align: center;
   color: #fff;
-  line-height: 60px;
 }
 
 #intro .welcome {
   margin-top: 100px;
   font-size: 28px;
   opacity: 0.5;
-  color: rgba(255, 255, 255);
   animation: welcome 3s ease;
 }
 
@@ -45,7 +43,6 @@
 
 #intro .global {
   font-size: 80px;
-  color: #FFF;
   opacity: 1;
   animation: global 5s ease;
 }
@@ -58,6 +55,24 @@
   35% {
     opacity: 0;
   }
+}
+
+#intro .description {
+  width: 485px;
+  opacity: 0.8;
+  animation: global 8s ease;
+}
+
+#intro .about {
+  margin-bottom: 40px;
+}
+
+#intro .description .instructions ul {
+  margin: 0;
+}
+
+#intro .description .instructions li, #intro .description .instructions div {
+  text-align: left;
 }
 
 
