@@ -53,3 +53,18 @@ globalData is a 3d visualization of trade between countries. Users are able to f
     );
   }
 ```
+
+## Getting started
+* this is a note to self on how to start working on this project again if you ever need to work on it again
+* install git on computer and git-cli
+* install vscode if vscode is needed
+* `git clone` project
+* install npm
+* go to project location
+* run `npm install`, if there are vulnerablities, run install --force and audit
+* if there are further issues. update your version of webpack, webpack-cli, webpack webpack-dev-server
+* run `npm start` to watch project
+* run  `npm run dev` to start server and launch localhost on web browser
+* in order to deploy changes make sure bundle.js has been updated
+* commit changes to gh-pages and push up updated gh-pages branch
+* changes will automatically be deployed

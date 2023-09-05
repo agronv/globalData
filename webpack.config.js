@@ -13,5 +13,15 @@ module.exports = {
             'THREE': require.resolve('three')
         })
     ],
+    devServer: {
+        static: {
+            publicPath: "/globalData/"
+        },
+        port: 3000,
+        open: true,
+        hot: true,
+        compress: true,
+        historyApiFallback: true
+    },
     devtool: 'source-map',
 };
