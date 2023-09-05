@@ -16,13 +16,14 @@
   "dependencies": {
     "d3-geo": "^1.11.3",
     "graphql": "^14.2.0",
-    "graphql-request": "^1.8.2",
-    "three": "^0.101.1",
-    "webpack": "^4.29.1",
-    "webpack-cli": "^3.3.12"
+    "graphql-request": "^6.1.0",
+    "three": "^0.156.0",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
   },
   "devDependencies": {
+    "@webpack-cli/serve": "^2.0.5",
     "gh-pages": "^2.0.1",
-    "webpack-dev-server": "^3.11.0"
+    "webpack-dev-server": "^4.15.1"
   }
 }
