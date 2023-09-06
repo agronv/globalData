@@ -2,11 +2,11 @@ const path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-    entry: "./lib/index.js",
+    entry: "./src/index.js",
     output: {
-        path: path.resolve(__dirname, 'lib'),
+        path: path.resolve(__dirname, 'src'),
         filename: "bundle.js",
-        publicPath: "/globalData/"
+        // publicPath: "/globalData/"
     },
     plugins: [
         new webpack.ProvidePlugin({
@@ -14,14 +14,16 @@ module.exports = {
         })
     ],
     devServer: {
-        static: {
-            publicPath: "/globalData/"
-        },
+        // static: {
+        //     publicPath: "/globalData/"
+        // },
         port: 3000,
         open: true,
         hot: true,
         compress: true,
-        historyApiFallback: true
+        historyApiFallback:{
+            index: 'index.html'
+        }
     },
     devtool: 'source-map',
 };

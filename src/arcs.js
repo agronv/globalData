@@ -74,7 +74,7 @@ export default class Arcs {
     let curve = this.getCurveFromCoords(startLat, startLong, endLat, endLong);
     let pipes = Math.floor(5*this.value) || 1;
 
-    const geometry = new THREE.TubeBufferGeometry(curve, 50, this.value, pipes, false);
+    const geometry = new THREE.TubeGeometry(curve, 50, this.value, pipes, false);
     const curveObject = new THREE.Line(geometry, this.material);
 
     this.scene.add(curveObject);
