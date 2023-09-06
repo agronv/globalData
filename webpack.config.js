@@ -2,10 +2,11 @@ const path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-    entry: "./src/index.js",
+    mode: 'development',
+    entry: path.resolve(__dirname, 'src/index.js'),
     output: {
-        path: path.resolve(__dirname, 'src'),
-        filename: "bundle.js",
+        path: path.resolve(__dirname, 'dist'),
+        filename: "bundle.js"
         // publicPath: "/globalData/"
     },
     plugins: [
@@ -14,16 +15,13 @@ module.exports = {
         })
     ],
     devServer: {
-        // static: {
-        //     publicPath: "/globalData/"
-        // },
-        port: 3000,
+        static: {
+            directory: path.resolve(__dirname, 'dist')
+        },
         open: true,
         hot: true,
         compress: true,
-        historyApiFallback:{
-            index: 'index.html'
-        }
+        historyApiFallback: true
     },
     devtool: 'source-map',
 };

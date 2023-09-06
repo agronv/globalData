@@ -12,7 +12,8 @@ export default class Inputs {
     this.container = container;
     this.currentCountry = "840";
     this.currentProduct = "17";
-    this.key = "3276712c644c4f40a36307cb0a85cc12";
+    this.importKey = "3276712c644c4f40a36307cb0a85cc12";
+    this.exportKey = "1d2f950c11dd423e84a787e5c4ed9981";
     this.proxyUrl = "https://corsproxyglobe.herokuapp.com/";
     this.isFetching = false;
     this.isFetchAgain = false;
@@ -87,7 +88,7 @@ export default class Inputs {
     this.productInput.value = products[this.currentProduct].name;
     this.searchTitle.innerText = `${countries[this.currentCountry].name} - ${products[this.currentProduct].name}`;
 
-    this.fetchData(true);
+    this.fetchData();
   }
 
   fetchCountry(e) {
@@ -120,20 +121,20 @@ export default class Inputs {
     this.fetchData();
   }
 
-  fetchy(url) {
-    return fetch(url, {headers: {'Ocp-Apim-Subscription-Key': this.key}}).then(response => response.json())
+  fetchy(url, key) {
+    return fetch(url, {headers: {'Ocp-Apim-Subscription-Key': key}}).then(response => response.json())
   }
 
   sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
-  async fetchData(isInitialLoad = false) {
+  async fetchData() {
     if (this.isFetching) return this.isFetchAgain = true;
 
     this.isFetching = true;
 
-    this.loading.className = isInitialLoad ? "" : "loader";
+    this.loading.className = "loader";
     this.noData.className = "";
     this.searchTitle.innerText = `${countries[this.currentCountry].name} - ${products[this.currentProduct].name}`;
 
@@ -144,9 +145,8 @@ export default class Inputs {
     const importUrl = `https://api.wto.org/timeseries/v1/data?i=HS_M_0010&r=${this.currentCountry}&p=default&ps=${this.currentYear}&pc=${this.currentProduct}&mode=codes&dec=4`;
     const exportUrl = `https://api.wto.org/timeseries/v1/data?i=HS_M_0010&r=all&p=${this.currentCountry}&ps=${this.currentYear}&pc=${this.currentProduct}&mode=codes&dec=4`;
 
-    const imports = await this.fetchy(importUrl);
-    await this.sleep(1100); // WAIT 1100 ms because api is rate limited to 1 request per second
-    const exports = await this.fetchy(exportUrl);
+    const imports = await this.fetchy(importUrl, this.importKey);
+    const exports = await this.fetchy(exportUrl, this.exportKey);
 
     if (this.isFetchAgain) {
       this.isFetchAgain = false;
