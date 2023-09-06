@@ -90,19 +90,25 @@ export default class Globe {
     this.camera = new THREE.PerspectiveCamera(30, this.width / this.height, 1, 10000);
     this.camera.position.z = 10000;
 
+    // geometry = new THREE.SphereGeometry(this.globeRadius, 100, 100);
+    // loader = new THREE.TextureLoader();
+    // shader = Shaders.earth;
+    // uniforms = THREE.UniformsUtils.clone(shader.uniforms);
+    // uniforms.texture.value = loader.load('https://notefloat.s3.amazonaws.com/big_world.png');
+
+    // material = new THREE.ShaderMaterial({
+    //   uniforms: uniforms,
+    //   vertexShader: shader.vertexShader,
+    //   fragmentShader: shader.fragmentShader,
+    //   colorWrite: false
+    // });
     geometry = new THREE.SphereGeometry(this.globeRadius, 100, 100);
-    loader = new THREE.TextureLoader();
-    shader = Shaders.earth;
-    uniforms = THREE.UniformsUtils.clone(shader.uniforms);
-    uniforms.texture.value = loader.load('https://notefloat.s3.amazonaws.com/big_world.png');
-
-    material = new THREE.ShaderMaterial({
-      uniforms: uniforms,
-      vertexShader: shader.vertexShader,
-      fragmentShader: shader.fragmentShader
+    material = new THREE.MeshBasicMaterial({
+      map: new THREE.TextureLoader().load("https://notefloat.s3.amazonaws.com/big_world.png")
     });
-
     this.globe = new THREE.Mesh(geometry, material);
+
+    // this.globe = new THREE.Mesh(geometry, material);
     this.globe.rotation.y = Math.PI;
     this.globe.position.y = this.globe.position.y
     this.scene.add(this.globe);

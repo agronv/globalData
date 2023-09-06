@@ -88,7 +88,7 @@ export default class Inputs {
     this.productInput.value = products[this.currentProduct].name;
     this.searchTitle.innerText = `${countries[this.currentCountry].name} - ${products[this.currentProduct].name}`;
 
-    this.fetchData();
+    this.fetchData(true);
   }
 
   fetchCountry(e) {
@@ -129,11 +129,11 @@ export default class Inputs {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
-  async fetchData() {
+  async fetchData(isInitialLoad = fals) {
     if (this.isFetching) return this.isFetchAgain = true;
     this.isFetching = true;
 
-    this.loading.className = "loader";
+    this.loading.className = isInitialLoad ? "" : "loader";
     this.noData.className = "";
     this.searchTitle.innerText = `${countries[this.currentCountry].name} - ${products[this.currentProduct].name}`;
 

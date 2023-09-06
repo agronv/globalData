@@ -25,7 +25,7 @@ function start (e) {
     const shifter = -5
     const width = window.innerWidth;
     const height = window.innerHeight + shifter;
-    const globeRadius = 180;
+    const globeRadius = 160;
 
     const earth = new Globe(scene, container, globeRadius, height, width, shifter);
     earth.animate();
