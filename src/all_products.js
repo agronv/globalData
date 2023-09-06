@@ -1,4 +1,4 @@
-export default
+// export default
 
 [
 {"code": "01", "name": "Live animals"},

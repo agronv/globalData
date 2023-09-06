@@ -7,7 +7,7 @@ export default class Inputs {
     this.arcs = arcs;
     this.noData = noData;
     this.loading = loading;
-    this.maxYear = 2018;
+    this.maxYear = 2020;
     this.currentYear = this.maxYear.toString();
     this.container = container;
     this.currentCountry = "840";
