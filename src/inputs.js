@@ -131,7 +131,6 @@ export default class Inputs {
 
   async fetchData() {
     if (this.isFetching) return this.isFetchAgain = true;
-
     this.isFetching = true;
 
     this.loading.className = "loader";
@@ -150,7 +149,6 @@ export default class Inputs {
 
     if (this.isFetchAgain) {
       this.isFetchAgain = false;
-      await this.sleep(1100); // ORDERING IS VERY IMPORTANT HERE
       this.isFetching = false;
       this.fetchData();
     } else {
