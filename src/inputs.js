@@ -125,10 +125,6 @@ export default class Inputs {
     return fetch(url, {headers: {'Ocp-Apim-Subscription-Key': key}}).then(response => response.json())
   }
 
-  sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
-
   async fetchData(isInitialLoad = false) {
     if (this.isFetching) return this.isFetchAgain = true;
     this.isFetching = true;

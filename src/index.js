@@ -35,5 +35,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
         barChart.className = "appear";
     
         earth.animate();
+        earth.lookAtCountry(38, -88); // we look at USA first
     }
 });

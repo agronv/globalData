@@ -66,6 +66,7 @@ export default class Globe {
     this.camera = new THREE.PerspectiveCamera(30, this.width / this.height, 1, 10000);
     let group = new THREE.Group();
 
+    /////////////////// GLOBE ////////////////////////////
     this.globe = new THREE.Mesh(
       new THREE.SphereGeometry(this.globeRadius, 100, 100),
       new THREE.ShaderMaterial({
@@ -77,10 +78,11 @@ export default class Globe {
           }
         }
       }));
-
+    // without this orientation arcs will not be mapped correctly
     this.globe.rotation.y = Math.PI;
     group.add(this.globe);
-
+    
+    /////////////////// STARS ////////////////////////////
     let starGeometry = new THREE.BufferGeometry();
     let starMaterial = new THREE.PointsMaterial({
       color: 0xffffff,
@@ -100,7 +102,6 @@ export default class Globe {
     group.add(stars);
 
     this.scene.add(group);
-
     this.renderer.setSize(this.width, this.height);
     this.container.appendChild(this.renderer.domElement);
   }
@@ -119,19 +120,16 @@ export default class Globe {
     return (rotations * 2 * Math.PI) + long
   }
 
-  async lookAtCountry(lat, long, sleep=true) {
+  async lookAtCountry(lat, long) {
     this.target.y = (parseFloat(lat) / 90) * (Math.PI / 2)
     this.target.x = this.findClosestLong(((parseFloat(long) / 180) - 0.51) * Math.PI)
 
     this.rotationSpeed = 0;
-    if (sleep) {
-      await this.sleep(4000);
-    }
+    await this.sleep(4000);
     this.rotationSpeed = 0.002;
   }
 
   animate() {
-    console.log(1);
     requestAnimationFrame(this.animate);
     this.render();
   }
