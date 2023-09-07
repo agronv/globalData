@@ -5963,14 +5963,12 @@ class Globe {
     return (rotations * 2 * Math.PI) + long
   }
 
-  async lookAtCountry(lat, long, sleep=true) {
+  async lookAtCountry(lat, long) {
     this.target.y = (parseFloat(lat) / 90) * (Math.PI / 2)
     this.target.x = this.findClosestLong(((parseFloat(long) / 180) - 0.51) * Math.PI)
 
     this.rotationSpeed = 0;
-    if (sleep) {
-      await this.sleep(4000);
-    }
+    await this.sleep(4000);
     this.rotationSpeed = 0.002;
   }
 
@@ -6178,10 +6176,6 @@ class Inputs {
 
   fetchy(url, key) {
     return fetch(url, {headers: {'Ocp-Apim-Subscription-Key': key}}).then(response => response.json())
-  }
-
-  sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
   }
 
   async fetchData(isInitialLoad = false) {
