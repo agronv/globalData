@@ -129,7 +129,7 @@ export default class Inputs {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
-  async fetchData(isInitialLoad = fals) {
+  async fetchData(isInitialLoad = false) {
     if (this.isFetching) return this.isFetchAgain = true;
     this.isFetching = true;
 
