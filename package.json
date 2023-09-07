@@ -5,8 +5,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack serve",
-    "build": "webpack build"
+    "start": "webpack --watch",
+    "server": "webpack serve"
   },
   "keywords": [],
   "author": "",
