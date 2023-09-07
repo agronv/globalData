@@ -5886,91 +5886,68 @@ class Globe {
 
   initialize() {
     let Shaders = {
-      'earth': {
-        uniforms: {
-          'texture': { type: 't', value: null }
-        },
-        vertexShader: [
-          'varying vec3 vNormal;',
-          'varying vec2 vUv;',
-          'void main() {',
+      vertexShader: [
+        'varying vec3 vNormal;',
+        'varying vec2 vUv;',
+        'void main() {',
           'gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );',
           'vNormal = normalize( normalMatrix * normal );',
           'vUv = uv;',
-          '}'
-        ].join('\n'),
-        fragmentShader: [
-          'uniform sampler2D texture;',
-          'varying vec3 vNormal;',
-          'varying vec2 vUv;',
-          'void main() {',
-          // 'vec3 diffuse = texture2D( texture, vUv ).xyz;',
-          'float intensity = 1.1 - dot( vNormal, vec3( 0.0, 0.0 , 1.75) );',
-          // 'vec3 atmosphere = vec3( 1.0, 0.2, .88 ) * pow( intensity, 1.0 );',
-          // 'gl_FragColor = vec4( diffuse + atmosphere, 1.0 );',
-          '}'
-        ].join('\n')
-      },
-      'atmosphere': {
-        vertexShader: [
-          'varying vec3 vNormal;',
-          'void main() {',
-          'vNormal = normalize( normalMatrix * normal );',
-          'gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );',
-          '}'
-        ].join('\n'),
-        fragmentShader: [
-          'varying vec3 vNormal;',
-          'void main() {',
-          'float intensity = pow( 1.3 - dot( vNormal, vec3( 1.0, 1.0, 1.0 ) ), 2.0 );',
-          // 'gl_FragColor = vec4( 1.0, 1.0, 1.0, 1.0 ) * intensity;',
-          '}'
-        ].join('\n')
-      }
-    };
-
-    let geometry, loader, material, shader, uniforms, halo;
+        '}'
+      ].join('\n'),
+      fragmentShader: [
+        'uniform sampler2D globeTexture;',
+        'varying vec3 vNormal;',
+        'varying vec2 vUv;',
+        'void main() {',
+          'float intensity = 1.05 - dot( vNormal, vec3( 0.0, 0.0 , 1.5) );',
+          'vec3 atmosphere = vec3( 0.8 , 0.2, 0.8 ) * pow( intensity, 1.0 );',
+          'gl_FragColor = vec4( atmosphere + texture2D( globeTexture, vUv ).xyz, 1.0 );',
+        '}'
+      ].join('\n')
+  };
 
     this.camera = new three__WEBPACK_IMPORTED_MODULE_0__.PerspectiveCamera(30, this.width / this.height, 1, 10000);
     this.camera.position.z = 10000;
 
-    // geometry = new THREE.SphereGeometry(this.globeRadius, 100, 100);
-    // loader = new THREE.TextureLoader();
-    // shader = Shaders.earth;
-    // uniforms = THREE.UniformsUtils.clone(shader.uniforms);
-    // uniforms.texture.value = loader.load('https://notefloat.s3.amazonaws.com/big_world.png');
+    this.globe = new three__WEBPACK_IMPORTED_MODULE_0__.Mesh(
+      new three__WEBPACK_IMPORTED_MODULE_0__.SphereGeometry(this.globeRadius, 100, 100),
+      new three__WEBPACK_IMPORTED_MODULE_0__.ShaderMaterial({
+        vertexShader: Shaders.vertexShader,
+        fragmentShader: Shaders.fragmentShader,
+        uniforms: {
+          globeTexture: {
+            value: new three__WEBPACK_IMPORTED_MODULE_0__.TextureLoader().load("https://notefloat.s3.amazonaws.com/big_world.png")
+          }
+        }
+      }));
 
-    // material = new THREE.ShaderMaterial({
-    //   uniforms: uniforms,
-    //   vertexShader: shader.vertexShader,
-    //   fragmentShader: shader.fragmentShader,
-    //   colorWrite: false
-    // });
-    geometry = new three__WEBPACK_IMPORTED_MODULE_0__.SphereGeometry(this.globeRadius, 100, 100);
-    material = new three__WEBPACK_IMPORTED_MODULE_0__.MeshBasicMaterial({
-      map: new three__WEBPACK_IMPORTED_MODULE_0__.TextureLoader().load("https://notefloat.s3.amazonaws.com/big_world.png")
-    });
-    this.globe = new three__WEBPACK_IMPORTED_MODULE_0__.Mesh(geometry, material);
+    this.globe.rotation.y = 10;
+    // this.scene.add(this.globe);
 
-    // this.globe = new THREE.Mesh(geometry, material);
-    this.globe.rotation.y = Math.PI;
-    this.globe.position.y = this.globe.position.y
-    this.scene.add(this.globe);
-
-    shader = Shaders.atmosphere;
-    uniforms = three__WEBPACK_IMPORTED_MODULE_0__.UniformsUtils.clone(shader.uniforms);
-
-    material = new three__WEBPACK_IMPORTED_MODULE_0__.ShaderMaterial({
-      vertexShader: shader.vertexShader,
-      fragmentShader: shader.fragmentShader,
-      side: three__WEBPACK_IMPORTED_MODULE_0__.BackSide,
-      blending: three__WEBPACK_IMPORTED_MODULE_0__.AdditiveBlending,
-      transparent: true
+    let starGeometry = new three__WEBPACK_IMPORTED_MODULE_0__.BufferGeometry();
+    let starMaterial = new three__WEBPACK_IMPORTED_MODULE_0__.PointsMaterial({
+      color: 0xffffff,
+      size: 5
     });
 
-    halo = new three__WEBPACK_IMPORTED_MODULE_0__.Mesh(geometry, material);
-    halo.scale.set(1.2, 1.2, 1.2);
-    this.scene.add(halo);
+    let starVertices = [];
+    for (let i=0; i<1000000; i++) {
+      let x = (Math.random() -0.5) * 5000;
+      let y = (Math.random() -0.5) * 5000;
+      let z = (Math.random() -0.5) * 5000;
+      starVertices.push(x, y, z);
+    }
+    console.log(starVertices);
+    console.log(this.globe.position.x);
+    console.log(this.globe.position.y);
+    console.log(this.globe.position.z);
+    console.log(this.height);
+    // console.log(starVertices);
+
+    starGeometry.setAttribute('position', new three__WEBPACK_IMPORTED_MODULE_0__.Float32BufferAttribute(starVertices, 3))
+    let stars = new three__WEBPACK_IMPORTED_MODULE_0__.Points(starGeometry, starMaterial);
+    this.scene.add(stars);
 
     this.renderer.setSize(this.width, this.height);
     this.container.appendChild(this.renderer.domElement);
@@ -6234,8 +6211,7 @@ class Inputs {
       this.isFetching = false;
 
       this.loading.className = "";
-      console.log(imports);
-      console.log(exports);
+
       let importData = imports && imports.Dataset ? imports.Dataset : [];
       let exportData = exports && exports.Dataset ? exports.Dataset : [];
   

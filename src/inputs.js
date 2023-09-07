@@ -155,8 +155,7 @@ export default class Inputs {
       this.isFetching = false;
 
       this.loading.className = "";
-      console.log(imports);
-      console.log(exports);
+
       let importData = imports && imports.Dataset ? imports.Dataset : [];
       let exportData = exports && exports.Dataset ? exports.Dataset : [];
   

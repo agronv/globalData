@@ -42,55 +42,35 @@ export default class Globe {
 
   initialize() {
     let Shaders = {
-      earth: {
-        vertexShader: [
-          'varying vec3 vNormal;',
-          'varying vec2 vUv;',
-          'void main() {',
-            'gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );',
-            'vNormal = normal;',
-            'vUv = uv;',
-          '}'
-        ].join('\n'),
-        fragmentShader: [
-          'uniform sampler2D globeTexture;',
-          'varying vec3 vNormal;',
-          'varying vec2 vUv;',
-          'void main() {',
-            'float intensity = 1.05 - dot( vNormal, vec3( 0.0, 0.0 , 1.0) );',
-            'vec3 atmosphere = vec3( 0.3, 0.6, 1.0 ) * pow( intensity, 1.5 );',
-            'gl_FragColor = vec4( atmosphere + texture2D( globeTexture, vUv ).xyz, 1.0 );',
-          '}'
-        ].join('\n')
-    },
-    halo: {
       vertexShader: [
         'varying vec3 vNormal;',
+        'varying vec2 vUv;',
         'void main() {',
-          'vNormal = normal;',
           'gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );',
+          'vNormal = normalize( normalMatrix * normal );',
+          'vUv = uv;',
         '}'
       ].join('\n'),
       fragmentShader: [
+        'uniform sampler2D globeTexture;',
         'varying vec3 vNormal;',
+        'varying vec2 vUv;',
         'void main() {',
-          'float intensity = pow( 1.3 - dot( vNormal, vec3( 1.0, 1.0, 1.0 ) ), 2.0 );',
-          'gl_FragColor = vec4( 1.0, 1.0, 1.0, 1.0 ) * intensity;',
+          'float intensity = 1.05 - dot( vNormal, vec3( 0.0, 0.0 , 1.5) );',
+          'vec3 atmosphere = vec3( 0.8 , 0.2, 0.8 ) * pow( intensity, 1.0 );',
+          'gl_FragColor = vec4( atmosphere + texture2D( globeTexture, vUv ).xyz, 1.0 );',
         '}'
       ].join('\n')
-    }
   };
 
     this.camera = new THREE.PerspectiveCamera(30, this.width / this.height, 1, 10000);
     this.camera.position.z = 10000;
 
-    let geometry = new THREE.SphereGeometry(this.globeRadius, 100, 100);
-
     this.globe = new THREE.Mesh(
-      geometry,
+      new THREE.SphereGeometry(this.globeRadius, 100, 100),
       new THREE.ShaderMaterial({
-        vertexShader: Shaders.earth.vertexShader,
-        fragmentShader: Shaders.earth.fragmentShader,
+        vertexShader: Shaders.vertexShader,
+        fragmentShader: Shaders.fragmentShader,
         uniforms: {
           globeTexture: {
             value: new THREE.TextureLoader().load("https://notefloat.s3.amazonaws.com/big_world.png")
@@ -98,22 +78,32 @@ export default class Globe {
         }
       }));
 
-    this.globe.rotation.y = Math.PI;
-    this.globe.position.y = this.globe.position.y
-    this.scene.add(this.globe);
+    this.globe.rotation.y = 10;
+    // this.scene.add(this.globe);
 
-    let halo = new THREE.Mesh(
-      geometry,
-      new THREE.ShaderMaterial({
-        vertexShader: Shaders.halo.vertexShader,
-        fragmentShader: Shaders.halo.fragmentShader,
-        side: THREE.BackSide,
-        blending: THREE.AdditiveBlending,
-        transparent: true
-      }));
+    let starGeometry = new THREE.BufferGeometry();
+    let starMaterial = new THREE.PointsMaterial({
+      color: 0xffffff,
+      size: 5
+    });
 
-    halo.scale.set(1.2, 1.2, 1.2);
-    this.scene.add(halo);
+    let starVertices = [];
+    for (let i=0; i<1000000; i++) {
+      let x = (Math.random() -0.5) * 5000;
+      let y = (Math.random() -0.5) * 5000;
+      let z = (Math.random() -0.5) * 5000;
+      starVertices.push(x, y, z);
+    }
+    console.log(starVertices);
+    console.log(this.globe.position.x);
+    console.log(this.globe.position.y);
+    console.log(this.globe.position.z);
+    console.log(this.height);
+    // console.log(starVertices);
+
+    starGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starVertices, 3))
+    let stars = new THREE.Points(starGeometry, starMaterial);
+    this.scene.add(stars);
 
     this.renderer.setSize(this.width, this.height);
     this.container.appendChild(this.renderer.domElement);
