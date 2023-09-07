@@ -28,9 +28,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
         const intro = document.getElementById('intro');
         const title = document.getElementById('title');
         const searchQuery = document.getElementById('search-query');
-        intro.className = "fade-away"
-        title.className = "appear"
-        searchQuery.className = "appear"
+        const barChart = document.getElementById('bar-chart');
+        intro.className = "fade-away";
+        title.className = "appear";
+        searchQuery.className = "appear";
+        barChart.className = "appear";
     
         earth.animate();
     }

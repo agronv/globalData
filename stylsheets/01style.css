@@ -161,7 +161,7 @@ main {
   width: 20px;
 }
 
-.bar-chart {
+#bar-chart {
   position: fixed;
   bottom: 10px;
   left: 2%;
@@ -169,6 +169,12 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  opacity: 0;
+}
+
+#bar-chart.appear {
+  opacity: 1 !important;
+  transition: opacity 3s ease;
 }
 
 .import-key {
@@ -372,7 +378,7 @@ input::placeholder {
     right: 1%;
   }
 
-  .bar-chart {
+  #bar-chart {
     left: 1%;
   }
 
