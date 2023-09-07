@@ -5857,7 +5857,7 @@ class Globe {
     this.biggestGlobeSize = 1050;
     this.smallestGlobeSize = 950;
     this.pulseRate = 0.5;
-    this.distance = 100000;
+    this.distance = 1000;
     this.distanceTarget = this.biggestGlobeSize;
     this.rotationSpeed = 0.002;
     this.mouse = { x: 0, y: 0 };
@@ -5908,8 +5908,6 @@ class Globe {
   };
 
     this.camera = new three__WEBPACK_IMPORTED_MODULE_0__.PerspectiveCamera(30, this.width / this.height, 1, 10000);
-    this.camera.position.z = 10000;
-
     let group = new three__WEBPACK_IMPORTED_MODULE_0__.Group();
 
     this.globe = new three__WEBPACK_IMPORTED_MODULE_0__.Mesh(
@@ -5924,7 +5922,7 @@ class Globe {
         }
       }));
 
-    this.globe.rotation.y = 10;
+    this.globe.rotation.y = Math.PI;
     group.add(this.globe);
 
     let starGeometry = new three__WEBPACK_IMPORTED_MODULE_0__.BufferGeometry();

@@ -13,7 +13,7 @@ export default class Globe {
     this.biggestGlobeSize = 1050;
     this.smallestGlobeSize = 950;
     this.pulseRate = 0.5;
-    this.distance = 100000;
+    this.distance = 1000;
     this.distanceTarget = this.biggestGlobeSize;
     this.rotationSpeed = 0.002;
     this.mouse = { x: 0, y: 0 };
@@ -64,8 +64,6 @@ export default class Globe {
   };
 
     this.camera = new THREE.PerspectiveCamera(30, this.width / this.height, 1, 10000);
-    this.camera.position.z = 10000;
-
     let group = new THREE.Group();
 
     this.globe = new THREE.Mesh(
@@ -80,7 +78,7 @@ export default class Globe {
         }
       }));
 
-    this.globe.rotation.y = 10;
+    this.globe.rotation.y = Math.PI;
     group.add(this.globe);
 
     let starGeometry = new THREE.BufferGeometry();
