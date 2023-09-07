@@ -5963,12 +5963,14 @@ class Globe {
     return (rotations * 2 * Math.PI) + long
   }
 
-  async lookAtCountry(lat, long) {
+  async lookAtCountry(lat, long, sleep=true) {
     this.target.y = (parseFloat(lat) / 90) * (Math.PI / 2)
     this.target.x = this.findClosestLong(((parseFloat(long) / 180) - 0.51) * Math.PI)
 
     this.rotationSpeed = 0;
-    await this.sleep(4000);
+    if (sleep) {
+      await this.sleep(4000);
+    }
     this.rotationSpeed = 0.002;
   }
 
@@ -58726,10 +58728,11 @@ function start (e) {
     const globeRadius = 160;
 
     const earth = new _globe__WEBPACK_IMPORTED_MODULE_0__["default"](scene, container, globeRadius, height, width, shifter);
-    earth.animate();
-
     const arcs = new _arcs__WEBPACK_IMPORTED_MODULE_1__["default"](scene, globeRadius, height, noData, shifter, earth);
     const inputs = new _inputs__WEBPACK_IMPORTED_MODULE_2__["default"](scene, container, arcs, loading, noData);
+
+    earth.animate();
+    earth.lookAtCountry(38, -88); // We look at USA first
 }
 })();
 

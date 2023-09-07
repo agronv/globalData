@@ -28,8 +28,9 @@ function start (e) {
     const globeRadius = 160;
 
     const earth = new Globe(scene, container, globeRadius, height, width, shifter);
-    earth.animate();
-
     const arcs = new Arcs(scene, globeRadius, height, noData, shifter, earth);
     const inputs = new Inputs(scene, container, arcs, loading, noData);
+
+    earth.animate();
+    earth.lookAtCountry(38, -88); // We look at USA first
 }

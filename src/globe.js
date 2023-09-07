@@ -119,12 +119,14 @@ export default class Globe {
     return (rotations * 2 * Math.PI) + long
   }
 
-  async lookAtCountry(lat, long) {
+  async lookAtCountry(lat, long, sleep=true) {
     this.target.y = (parseFloat(lat) / 90) * (Math.PI / 2)
     this.target.x = this.findClosestLong(((parseFloat(long) / 180) - 0.51) * Math.PI)
 
     this.rotationSpeed = 0;
-    await this.sleep(4000);
+    if (sleep) {
+      await this.sleep(4000);
+    }
     this.rotationSpeed = 0.002;
   }
 
