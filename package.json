@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack serve",
-    "predeploy": "webpack build"
+    "build": "webpack build"
   },
   "keywords": [],
   "author": "",
