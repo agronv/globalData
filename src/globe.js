@@ -42,89 +42,76 @@ export default class Globe {
 
   initialize() {
     let Shaders = {
-      'earth': {
-        uniforms: {
-          'texture': { type: 't', value: null }
-        },
+      earth: {
         vertexShader: [
           'varying vec3 vNormal;',
           'varying vec2 vUv;',
           'void main() {',
-          'gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );',
-          'vNormal = normalize( normalMatrix * normal );',
-          'vUv = uv;',
+            'gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );',
+            'vNormal = normal;',
+            'vUv = uv;',
           '}'
         ].join('\n'),
         fragmentShader: [
-          'uniform sampler2D texture;',
+          'uniform sampler2D globeTexture;',
           'varying vec3 vNormal;',
           'varying vec2 vUv;',
           'void main() {',
-          // 'vec3 diffuse = texture2D( texture, vUv ).xyz;',
-          'float intensity = 1.1 - dot( vNormal, vec3( 0.0, 0.0 , 1.75) );',
-          // 'vec3 atmosphere = vec3( 1.0, 0.2, .88 ) * pow( intensity, 1.0 );',
-          // 'gl_FragColor = vec4( diffuse + atmosphere, 1.0 );',
+            'float intensity = 1.05 - dot( vNormal, vec3( 0.0, 0.0 , 1.0) );',
+            'vec3 atmosphere = vec3( 0.3, 0.6, 1.0 ) * pow( intensity, 1.5 );',
+            'gl_FragColor = vec4( atmosphere + texture2D( globeTexture, vUv ).xyz, 1.0 );',
           '}'
         ].join('\n')
-      },
-      'atmosphere': {
-        vertexShader: [
-          'varying vec3 vNormal;',
-          'void main() {',
-          'vNormal = normalize( normalMatrix * normal );',
+    },
+    halo: {
+      vertexShader: [
+        'varying vec3 vNormal;',
+        'void main() {',
+          'vNormal = normal;',
           'gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );',
-          '}'
-        ].join('\n'),
-        fragmentShader: [
-          'varying vec3 vNormal;',
-          'void main() {',
+        '}'
+      ].join('\n'),
+      fragmentShader: [
+        'varying vec3 vNormal;',
+        'void main() {',
           'float intensity = pow( 1.3 - dot( vNormal, vec3( 1.0, 1.0, 1.0 ) ), 2.0 );',
-          // 'gl_FragColor = vec4( 1.0, 1.0, 1.0, 1.0 ) * intensity;',
-          '}'
-        ].join('\n')
-      }
-    };
-
-    let geometry, loader, material, shader, uniforms, halo;
+          'gl_FragColor = vec4( 1.0, 1.0, 1.0, 1.0 ) * intensity;',
+        '}'
+      ].join('\n')
+    }
+  };
 
     this.camera = new THREE.PerspectiveCamera(30, this.width / this.height, 1, 10000);
     this.camera.position.z = 10000;
 
-    // geometry = new THREE.SphereGeometry(this.globeRadius, 100, 100);
-    // loader = new THREE.TextureLoader();
-    // shader = Shaders.earth;
-    // uniforms = THREE.UniformsUtils.clone(shader.uniforms);
-    // uniforms.texture.value = loader.load('https://notefloat.s3.amazonaws.com/big_world.png');
+    let geometry = new THREE.SphereGeometry(this.globeRadius, 100, 100);
 
-    // material = new THREE.ShaderMaterial({
-    //   uniforms: uniforms,
-    //   vertexShader: shader.vertexShader,
-    //   fragmentShader: shader.fragmentShader,
-    //   colorWrite: false
-    // });
-    geometry = new THREE.SphereGeometry(this.globeRadius, 100, 100);
-    material = new THREE.MeshBasicMaterial({
-      map: new THREE.TextureLoader().load("https://notefloat.s3.amazonaws.com/big_world.png")
-    });
-    this.globe = new THREE.Mesh(geometry, material);
+    this.globe = new THREE.Mesh(
+      geometry,
+      new THREE.ShaderMaterial({
+        vertexShader: Shaders.earth.vertexShader,
+        fragmentShader: Shaders.earth.fragmentShader,
+        uniforms: {
+          globeTexture: {
+            value: new THREE.TextureLoader().load("https://notefloat.s3.amazonaws.com/big_world.png")
+          }
+        }
+      }));
 
-    // this.globe = new THREE.Mesh(geometry, material);
     this.globe.rotation.y = Math.PI;
     this.globe.position.y = this.globe.position.y
     this.scene.add(this.globe);
 
-    shader = Shaders.atmosphere;
-    uniforms = THREE.UniformsUtils.clone(shader.uniforms);
+    let halo = new THREE.Mesh(
+      geometry,
+      new THREE.ShaderMaterial({
+        vertexShader: Shaders.halo.vertexShader,
+        fragmentShader: Shaders.halo.fragmentShader,
+        side: THREE.BackSide,
+        blending: THREE.AdditiveBlending,
+        transparent: true
+      }));
 
-    material = new THREE.ShaderMaterial({
-      vertexShader: shader.vertexShader,
-      fragmentShader: shader.fragmentShader,
-      side: THREE.BackSide,
-      blending: THREE.AdditiveBlending,
-      transparent: true
-    });
-
-    halo = new THREE.Mesh(geometry, material);
     halo.scale.set(1.2, 1.2, 1.2);
     this.scene.add(halo);
 
