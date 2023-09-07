@@ -3,19 +3,9 @@ import Globe from './globe';
 import Arcs from './arcs';
 import Inputs from './inputs';
 
-document.addEventListener('click', start);
-document.addEventListener('keypress', start);
-
-function start (e) {
-    document.removeEventListener('click', start)
-    document.removeEventListener('keypress', start)
-
-    const intro = document.getElementById('intro');
-    const title = document.getElementById('title');
-    const searchQuery = document.getElementById('search-query');
-    intro.className = "fade-away"
-    title.className = "appear"
-    searchQuery.className = "appear"
+window.addEventListener('DOMContentLoaded', (event) => {
+    document.addEventListener('click', start);
+    document.addEventListener('keypress', start);
 
     const scene = new THREE.Scene();
     const container = document.getElementById('main');
@@ -31,6 +21,17 @@ function start (e) {
     const arcs = new Arcs(scene, globeRadius, height, noData, shifter, earth);
     const inputs = new Inputs(scene, container, arcs, loading, noData);
 
-    earth.animate();
-    earth.lookAtCountry(38, -88); // We look at USA first
-}
+    function start(e) {
+        document.removeEventListener('click', start)
+        document.removeEventListener('keypress', start)
+    
+        const intro = document.getElementById('intro');
+        const title = document.getElementById('title');
+        const searchQuery = document.getElementById('search-query');
+        intro.className = "fade-away"
+        title.className = "appear"
+        searchQuery.className = "appear"
+    
+        earth.animate();
+    }
+});

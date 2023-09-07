@@ -5975,6 +5975,7 @@ class Globe {
   }
 
   animate() {
+    console.log(1);
     requestAnimationFrame(this.animate);
     this.render();
   }
@@ -58703,19 +58704,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-document.addEventListener('click', start);
-document.addEventListener('keypress', start);
-
-function start (e) {
-    document.removeEventListener('click', start)
-    document.removeEventListener('keypress', start)
-
-    const intro = document.getElementById('intro');
-    const title = document.getElementById('title');
-    const searchQuery = document.getElementById('search-query');
-    intro.className = "fade-away"
-    title.className = "appear"
-    searchQuery.className = "appear"
+window.addEventListener('DOMContentLoaded', (event) => {
+    document.addEventListener('click', start);
+    document.addEventListener('keypress', start);
 
     const scene = new three__WEBPACK_IMPORTED_MODULE_3__.Scene();
     const container = document.getElementById('main');
@@ -58731,9 +58722,21 @@ function start (e) {
     const arcs = new _arcs__WEBPACK_IMPORTED_MODULE_1__["default"](scene, globeRadius, height, noData, shifter, earth);
     const inputs = new _inputs__WEBPACK_IMPORTED_MODULE_2__["default"](scene, container, arcs, loading, noData);
 
-    earth.animate();
-    earth.lookAtCountry(38, -88); // We look at USA first
-}
+    function start(e) {
+        document.removeEventListener('click', start)
+        document.removeEventListener('keypress', start)
+    
+        const intro = document.getElementById('intro');
+        const title = document.getElementById('title');
+        const searchQuery = document.getElementById('search-query');
+        intro.className = "fade-away"
+        title.className = "appear"
+        searchQuery.className = "appear"
+    
+        earth.animate();
+    }
+});
+
 })();
 
 /******/ })()

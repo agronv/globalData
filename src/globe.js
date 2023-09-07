@@ -131,6 +131,7 @@ export default class Globe {
   }
 
   animate() {
+    console.log(1);
     requestAnimationFrame(this.animate);
     this.render();
   }

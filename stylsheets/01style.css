@@ -248,6 +248,7 @@ main {
 }
 
 #search-query {
+  opacity: 0;
   margin: 0;
   font-size: 20px;
   padding: 0px 10px 10px 10px;
