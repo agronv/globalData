@@ -5910,6 +5910,7 @@ class Globe {
     this.camera = new three__WEBPACK_IMPORTED_MODULE_0__.PerspectiveCamera(30, this.width / this.height, 1, 10000);
     let group = new three__WEBPACK_IMPORTED_MODULE_0__.Group();
 
+    /////////////////// GLOBE ////////////////////////////
     this.globe = new three__WEBPACK_IMPORTED_MODULE_0__.Mesh(
       new three__WEBPACK_IMPORTED_MODULE_0__.SphereGeometry(this.globeRadius, 100, 100),
       new three__WEBPACK_IMPORTED_MODULE_0__.ShaderMaterial({
@@ -5921,10 +5922,11 @@ class Globe {
           }
         }
       }));
-
+    // without this orientation arcs will not be mapped correctly
     this.globe.rotation.y = Math.PI;
     group.add(this.globe);
-
+    
+    /////////////////// STARS ////////////////////////////
     let starGeometry = new three__WEBPACK_IMPORTED_MODULE_0__.BufferGeometry();
     let starMaterial = new three__WEBPACK_IMPORTED_MODULE_0__.PointsMaterial({
       color: 0xffffff,
@@ -5944,7 +5946,6 @@ class Globe {
     group.add(stars);
 
     this.scene.add(group);
-
     this.renderer.setSize(this.width, this.height);
     this.container.appendChild(this.renderer.domElement);
   }
@@ -58730,6 +58731,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         barChart.className = "appear";
     
         earth.animate();
+        earth.lookAtCountry(38, -88); // we look at USA first
     }
 });
 
