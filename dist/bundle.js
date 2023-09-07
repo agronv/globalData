@@ -5923,31 +5923,31 @@ class Globe {
       }));
 
     this.globe.rotation.y = 10;
-    // this.scene.add(this.globe);
+    this.scene.add(this.globe);
 
-    let starGeometry = new three__WEBPACK_IMPORTED_MODULE_0__.BufferGeometry();
-    let starMaterial = new three__WEBPACK_IMPORTED_MODULE_0__.PointsMaterial({
-      color: 0xffffff,
-      size: 5
-    });
+    // let starGeometry = new THREE.BufferGeometry();
+    // let starMaterial = new THREE.PointsMaterial({
+    //   color: 0xffffff,
+    //   size: 5
+    // });
 
-    let starVertices = [];
-    for (let i=0; i<1000000; i++) {
-      let x = (Math.random() -0.5) * 5000;
-      let y = (Math.random() -0.5) * 5000;
-      let z = (Math.random() -0.5) * 5000;
-      starVertices.push(x, y, z);
-    }
-    console.log(starVertices);
-    console.log(this.globe.position.x);
-    console.log(this.globe.position.y);
-    console.log(this.globe.position.z);
-    console.log(this.height);
+    // let starVertices = [];
+    // for (let i=0; i<1000000; i++) {
+    //   let x = (Math.random() -0.5) * 5000;
+    //   let y = (Math.random() -0.5) * 5000;
+    //   let z = (Math.random() -0.5) * 5000;
+    //   starVertices.push(x, y, z);
+    // }
+    // console.log(starVertices);
+    // console.log(this.globe.position.x);
+    // console.log(this.globe.position.y);
+    // console.log(this.globe.position.z);
+    // console.log(this.height);
     // console.log(starVertices);
 
-    starGeometry.setAttribute('position', new three__WEBPACK_IMPORTED_MODULE_0__.Float32BufferAttribute(starVertices, 3))
-    let stars = new three__WEBPACK_IMPORTED_MODULE_0__.Points(starGeometry, starMaterial);
-    this.scene.add(stars);
+    // starGeometry.setAttribute('position', new THREE.Float32BufferAttribute(starVertices, 3))
+    // let stars = new THREE.Points(starGeometry, starMaterial);
+    // this.scene.add(stars);
 
     this.renderer.setSize(this.width, this.height);
     this.container.appendChild(this.renderer.domElement);
