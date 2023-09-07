@@ -5934,7 +5934,7 @@ class Globe {
     });
 
     let starVertices = [];
-    for (let i=0; i<5000; i++) {
+    for (let i=0; i<50000; i++) {
       let x = (Math.random() -0.5) * 3000;
       let y = (Math.random() -0.5) * 3000;
       let z = (Math.random() -0.5) * 3000;
