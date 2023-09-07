@@ -63,8 +63,8 @@ globalData is a 3d visualization of trade between countries. Users are able to f
 * go to project location
 * run `npm install`, if there are vulnerablities, run install --force and audit
 * if there are further issues. update your version of webpack, webpack-cli, webpack webpack-dev-server
-* run `npm start` to watch project
-* run  `npm run dev` to start server and launch localhost on web browser
+* run `npm start` to watch project for any changes. this will automatically change your bundle.js
+* run  `npm run server` to start server and launch localhost on web browser
 * in order to deploy changes make sure bundle.js has been updated
-* commit changes to gh-pages and push up updated gh-pages branch
+* commit changes to gh-pages branch and push up updated gh-pages branch
 * changes will automatically be deployed
