@@ -6065,8 +6065,9 @@ class Inputs {
     this.container = container;
     this.currentCountry = "840";
     this.currentProduct = "17";
-    this.importKey = "3276712c644c4f40a36307cb0a85cc12";
-    this.exportKey = "1d2f950c11dd423e84a787e5c4ed9981";
+    // to regenerate api key head to here https://apiportal.wto.org/profile
+    this.importKey = "14c83ad03a5d4daf9183472ce02cfef7";
+    this.exportKey = "5d4f51f85a2740b58880de52bf9fc13b";
     this.proxyUrl = "https://corsproxyglobe.herokuapp.com/";
     this.isFetching = false;
     this.isFetchAgain = false;
