@@ -7,14 +7,16 @@ export default class Inputs {
     this.arcs = arcs;
     this.noData = noData;
     this.loading = loading;
+
+    // to regenerate api key head to here https://apiportal.wto.org/profile
+    this.importKey = "2bf663e82d694341870a516d558a651c";
+    this.exportKey = "4fcb4d3b126543a9bb1014c02810f6cc";
+    
     this.maxYear = 2020;
     this.currentYear = this.maxYear.toString();
     this.container = container;
     this.currentCountry = "840";
     this.currentProduct = "17";
-    // to regenerate api key head to here https://apiportal.wto.org/profile
-    this.importKey = "14c83ad03a5d4daf9183472ce02cfef7";
-    this.exportKey = "5d4f51f85a2740b58880de52bf9fc13b";
     this.proxyUrl = "https://corsproxyglobe.herokuapp.com/";
     this.isFetching = false;
     this.isFetchAgain = false;
